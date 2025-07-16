@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Horse Story Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #2c1810 0%, #8b4513 100%);
+            color: #f5f5dc;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #ddd;
+            font-style: italic;
+        }
+
+        .story-timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow-x: auto;
+        }
+
+        .timeline-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 0 10px;
+            padding: 20px;
+            background: linear-gradient(145deg, #8b4513, #a0522d);
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .timeline-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-section h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .timeline-section p {
+            font-size: 0.9rem;
+            color: #f5f5dc;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .part-section {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid #8b4513;
+        }
+
+        .part-section h2 {
+            color: #ffd700;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .part-section h3 {
+            color: #daa520;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .part-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .part-section li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .part-section li:before {
+            content: "🏒";
+            position: absolute;
+            left: 0;
+        }
+
+        .themes-section {
+            background: linear-gradient(145deg, #2c1810, #8b4513);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .themes-section h2 {
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .theme-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #daa520;
+        }
+
+        .theme-card h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .character-arc {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .character-arc h2 {
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .arc-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        .arc-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(145deg, #8b4513, #a0522d);
+            border-radius: 10px;
+            margin: 0 5px;
+        }
+
+        .arc-step h4 {
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .arc-step p {
+            font-size: 0.8rem;
+            color: #f5f5dc;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: #daa520;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-section {
+                margin-bottom: 15px;
+            }
+            
+            .arc-steps {
+                flex-direction: column;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Indian Horse</h1>
+            <p>by Richard Wagamese</p>
+            <p>A Story of Survival, Trauma, and Cultural Healing</p>
+        </div>
+
+        <div class="story-timeline">
+            <div class="timeline-section">
+                <h3>Part I: The Family</h3>
+                <p>Traditional Ojibwe life, family tragedy, and forced displacement</p>
+            </div>
+            <div class="timeline-section">
+                <h3>Part II: St. Jerome's</h3>
+                <p>Residential school trauma and discovery of hockey</p>
+            </div>
+            <div class="timeline-section">
+                <h3>Part III: The Kellys</h3>
+                <p>Foster family, junior hockey, and rising success</p>
+            </div>
+            <div class="timeline-section">
+                <h3>Part IV: Professional Hockey</h3>
+                <p>Big leagues, racism, and psychological breakdown</p>
+            </div>
+            <div class="timeline-section">
+                <h3>Part V: Healing</h3>
+                <p>Recovery, cultural reconnection, and redemption</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="part-section">
+                <h2>Part I: The Family</h2>
+                <h3>Key Events:</h3>
+                <ul>
+                    <li>Brother John's death devastates family</li>
+                    <li>Government agents arrive to take children</li>
+                    <li>Grandmother Naomi shares traditional wisdom</li>
+                    <li>Family flees into wilderness</li>
+                    <li>Saul is eventually captured</li>
+                </ul>
+            </div>
+
+            <div class="part-section">
+                <h2>Part II: St. Jerome's School</h2>
+                <h3>Key Events:</h3>
+                <ul>
+                    <li>Forced assimilation and cultural suppression</li>
+                    <li>Physical, emotional, and sexual abuse</li>
+                    <li>Discovery of hockey as escape</li>
+                    <li>Mentorship by Father Leboutilier</li>
+                    <li>Development of exceptional hockey skills</li>
+                </ul>
+            </div>
+
+            <div class="part-section">
+                <h2>Part III: The Kellys</h2>
+                <h3>Key Events:</h3>
+                <ul>
+                    <li>Foster placement with loving family</li>
+                    <li>Joins the Moose junior hockey team</li>
+                    <li>Faces increasing racism at games</li>
+                    <li>Becomes standout player despite obstacles</li>
+                    <li>Attracts attention from professional scouts</li>
+                </ul>
+            </div>
+
+            <div class="part-section">
+                <h2>Part IV: Professional Hockey</h2>
+                <h3>Key Events:</h3>
+                <ul>
+                    <li>Recruited to professional team</li>
+                    <li>Experiences isolation and pressure</li>
+                    <li>Repressed memories surface</li>
+                    <li>Reveals truth about Father Leboutilier's abuse</li>
+                    <li>Suffers complete breakdown and addiction</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="themes-section">
+            <h2>Major Themes</h2>
+            <div class="themes-grid">
+                <div class="theme-card">
+                    <h3>Cultural Genocide</h3>
+                    <p>The systematic destruction of Indigenous culture through residential schools, loss of language and traditions, and intergenerational trauma.</p>
+                </div>
+                <div class="theme-card">
+                    <h3>Identity & Belonging</h3>
+                    <p>Struggle to maintain Indigenous identity in white-dominated spaces and the challenge of existing between two worlds.</p>
+                </div>
+                <div class="theme-card">
+                    <h3>Racism & Discrimination</h3>
+                    <p>Institutional racism in Canadian society, sports as both escape and exposure to racism, and the burden of representation.</p>
+                </div>
+                <div class="theme-card">
+                    <h3>Healing & Resilience</h3>
+                    <p>The power of traditional Indigenous healing practices, community support, and the possibility of reclaiming identity.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="character-arc">
+            <h2>Saul's Character Arc</h2>
+            <div class="arc-steps">
+                <div class="arc-step">
+                    <h4>Innocent Child</h4>
+                    <p>Connected to family and culture</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arc-step">
+                    <h4>Traumatized Survivor</h4>
+                    <p>Adapts through hockey</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arc-step">
+                    <h4>Gifted Athlete</h4>
+                    <p>Finds identity in sport</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arc-step">
+                    <h4>Isolated Performer</h4>
+                    <p>Struggles with racism</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arc-step">
+                    <h4>Broken Man</h4>
+                    <p>Succumbs to trauma</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arc-step">
+                    <h4>Healing Person</h4>
+                    <p>Seeks recovery</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arc-step">
+                    <h4>Integrated Individual</h4>
+                    <p>Balances identity and gifts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
