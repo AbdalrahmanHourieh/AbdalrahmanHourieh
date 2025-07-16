@@ -1,0 +1,48 @@
+{
+  "name": "indian-horse-story-map",
+  "version": "1.0.0",
+  "description": "Interactive story map for Richard Wagamese's novel 'Indian Horse' - exploring themes of cultural genocide, identity, and healing",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server -p 8000",
+    "build": "echo 'No build process needed - static files'",
+    "deploy": "gh-pages -d .",
+    "lint": "echo 'No linting configured'",
+    "test": "echo 'No tests configured'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/indian-horse-story-map.git"
+  },
+  "keywords": [
+    "indian-horse",
+    "richard-wagamese",
+    "story-map",
+    "indigenous-literature",
+    "residential-schools",
+    "hockey",
+    "cultural-healing",
+    "educational-tool",
+    "interactive",
+    "literature-analysis"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/indian-horse-story-map/issues"
+  },
+  "homepage": "https://yourusername.github.io/indian-horse-story-map/",
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
